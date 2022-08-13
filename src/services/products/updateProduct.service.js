@@ -1,4 +1,4 @@
-import database from "../database";
+import database from "../../database";
 
 const updateProductService = async (id, productData) => {
   try {
@@ -21,10 +21,10 @@ const updateProductService = async (id, productData) => {
     const res = await database.query(query, [...values, id]);
 
     if (res.rows.length === 0) {
-      throw "Prodcut not found";
+      throw "Product not found";
     }
 
-    return { message: "Product updated", category: res.rows[0] };
+    return { message: "Product updated", product: res.rows[0] };
   } catch (err) {
     throw new Error(err);
   }

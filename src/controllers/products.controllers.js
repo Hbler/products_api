@@ -18,12 +18,13 @@ export const createProductController = async (req, res) => {
 
 export const deleteProductController = async (req, res) => {
   const { id } = req.params;
+
   try {
     const product = await deleteProductService(id);
 
-    return res.status(204);
+    return res.status(204).send();
   } catch (err) {
-    return res.status(400).json(err.message);
+    return res.status(400).json({ message: err.message });
   }
 };
 
@@ -34,9 +35,9 @@ export const updateProductController = async (req, res) => {
   try {
     const product = await updateProductService(id, productData);
 
-    return res.status(201).json(product);
+    return res.status(200).json(product);
   } catch (err) {
-    return res.status(400).json(err.message);
+    return res.status(400).json({ message: err.message });
   }
 };
 
@@ -45,9 +46,9 @@ export const getProductController = async (req, res) => {
   try {
     const product = await getProductService(id);
 
-    return res.status(201).json(product);
+    return res.status(200).json(product);
   } catch (err) {
-    return res.status(400).json(err.message);
+    return res.status(400).json({ message: err.message });
   }
 };
 
@@ -55,19 +56,19 @@ export const listProductsController = async (req, res) => {
   try {
     const products = await listProductsService();
 
-    return res.status(201).json(products);
+    return res.status(200).json(products);
   } catch (err) {
-    return res.status(400).json(err.message);
+    return res.status(400).json({ message: err.message });
   }
 };
 
 export const listProductsByCategoryController = async (req, res) => {
-  const { id } = req.params;
+  const { cat_id } = req.params;
   try {
-    const products = await listProductsByCategoryService(id);
+    const products = await listProductsByCategoryService(cat_id);
 
-    return res.status(201).json(products);
+    return res.status(200).json(products);
   } catch (err) {
-    return res.status(400).json(err.message);
+    return res.status(400).json({ message: err.message });
   }
 };

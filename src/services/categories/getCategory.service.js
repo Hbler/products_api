@@ -1,11 +1,10 @@
-import database from "../database";
+import database from "../../database";
 
 const getCategoryService = async (id) => {
   try {
-    const res = await database.query(
-      "SELECT FROM categories WHERE id = $1 RETURNING *",
-      [id]
-    );
+    const res = await database.query("SELECT * FROM categories WHERE id = $1", [
+      id,
+    ]);
 
     if (res.rows.length === 0) {
       throw "Category not found";

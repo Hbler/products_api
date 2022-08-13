@@ -1,4 +1,4 @@
-import database from "../database";
+import database from "../../database";
 
 const createProductSevice = async (name, price, category_id) => {
   try {
@@ -10,7 +10,7 @@ const createProductSevice = async (name, price, category_id) => {
       [name, price, category_id]
     );
 
-    return { message: "Product created", category: res.rows[0] };
+    return { message: "Product created", product: res.rows[0] };
   } catch (err) {
     throw new Error(err);
   }

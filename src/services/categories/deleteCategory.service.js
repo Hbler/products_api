@@ -1,4 +1,4 @@
-import database from "../database";
+import database from "../../database";
 
 const deleteCategoryService = async (id) => {
   try {
@@ -11,7 +11,7 @@ const deleteCategoryService = async (id) => {
       throw "Category not found";
     }
 
-    return;
+    return res.rows[0];
   } catch (err) {
     throw new Error(err);
   }
